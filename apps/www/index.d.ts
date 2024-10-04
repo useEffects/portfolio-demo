@@ -1,0 +1,1 @@
+declare module "@wethegit/react-autoplay-video"
