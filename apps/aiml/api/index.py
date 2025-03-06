@@ -3,7 +3,7 @@ import json
 import aiml
 
 k = aiml.Kernel()
-k.loadBrain("/Users/joel/Projects/nodejs/portfolio-demo/apps/aiml/api/brain.dump")
+k.loadBrain("api/brain.dump")
 
 class handler(BaseHTTPRequestHandler):
     BRAIN_FILE = "brain.dump"
