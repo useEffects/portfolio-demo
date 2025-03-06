@@ -49,13 +49,6 @@ class handler(BaseHTTPRequestHandler):
         return k.respond(question)
 
     def add_cors_headers(self):
-        allowed_origins = [
-            "http://localhost:3000",
-            "http://localhost:3001",
-            "https://johndoing.vercel.app"
-        ]
-        origin = self.headers.get('Origin')
-        if !origin or origin in allowed_origins:
-            self.send_header('Access-Control-Allow-Origin', origin)
+            self.send_header('Access-Control-Allow-Origin', '*')
             self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')  # ✅ Added OPTIONS
             self.send_header('Access-Control-Allow-Headers', 'Content-Type')
