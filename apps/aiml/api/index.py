@@ -3,7 +3,7 @@ import json
 import aiml
 
 k = aiml.Kernel()
-k.loadBrain("api/brain.dump")
+k.loadBrain("/Users/joel/Projects/nodejs/portfolio-demo/apps/aiml/api/brain.dump")
 
 class handler(BaseHTTPRequestHandler):
     BRAIN_FILE = "brain.dump"
@@ -46,13 +46,6 @@ class handler(BaseHTTPRequestHandler):
         return k.respond(question)
 
     def add_cors_headers(self):
-        allowed_origins = [
-            "http://localhost:3000",
-            "http://localhost:3001",
-            "https://johndoing.vercel.app"
-        ]
-        origin = self.headers.get('Origin')
-        if origin.lower() in allowed_origins:
-            self.send_header('Access-Control-Allow-Origin', origin)
-            self.send_header('Access-Control-Allow-Methods', 'GET, POST')
-            self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        self.send_header('Access-Control-Allow-Origin', origin)
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
