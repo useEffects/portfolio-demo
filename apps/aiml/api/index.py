@@ -12,13 +12,13 @@ class handler(BaseHTTPRequestHandler):
         if self.path == '/api':
             self.send_response(200)
             self.send_header('Content-type', 'text/plain')
-            self.add_cors_headers()
+            self.add_cors_headers(self)
             self.end_headers()
             self.wfile.write("Hello from AIML API!".encode('utf-8'))
         else:
             self.send_response(404)
             self.send_header('Content-type', 'text/plain')
-            self.add_cors_headers()
+            self.add_cors_headers(self)
             self.end_headers()
             self.wfile.write("404 Not Found".encode('utf-8'))
 
@@ -46,6 +46,14 @@ class handler(BaseHTTPRequestHandler):
         return k.respond(question)
 
     def add_cors_headers(self):
-        self.send_header('Access-Control-Allow-Origin', self.headers.get('Origin'))
-        self.send_header('Access-Control-Allow-Methods', 'GET, POST')
-        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        allowed_origins = [
+            "http://localhost:3000",
+            "http://localhost:3001",
+            "https://johndoing.vercel.app"
+        ]
+        origin = self.headers.get('Origin')
+        if origin in allowed_origins:
+            self.send_header('Access-Control-Allow-Origin', origin)
+            self.send_header('Access-Control-Allow-Methods', 'GET, POST')
+            self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+
