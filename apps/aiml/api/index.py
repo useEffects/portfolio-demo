@@ -46,6 +46,6 @@ class handler(BaseHTTPRequestHandler):
         return k.respond(question)
 
     def add_cors_headers(self):
-        self.send_header('Access-Control-Allow-Origin', origin)
+        self.send_header('Access-Control-Allow-Origin', self.headers.get('Origin'))
         self.send_header('Access-Control-Allow-Methods', 'GET, POST')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type')
