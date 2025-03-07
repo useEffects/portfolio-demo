@@ -1,6 +1,6 @@
 import { themes } from "@/theme";
 
-export const aimlAPIUrl = "https://free-aiml.vercel.app/"
+export const aimlAPIUrl = "https://free-aiml.vercel.app/api"
 export const owner = "useEffects"
 export const repo = "portfolio-demo"
 export const visitorLogIssueNumber = 1
